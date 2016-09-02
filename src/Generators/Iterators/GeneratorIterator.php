@@ -53,7 +53,7 @@ class GeneratorIterator implements \Iterator
     /**
      * @return GeneratorInterface
      */
-    public function getGenerator()
+    public function getGenerator(): GeneratorInterface
     {
         return $this->generator;
     }

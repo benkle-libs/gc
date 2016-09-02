@@ -19,34 +19,27 @@
 namespace Benkle\IGC\Generators\UniquenessProviders;
 
 
-use Benkle\IGC\Generators\Interfaces\UniquenessProviderIterface;
-
-/**
- * Class ArrayUniquenessProvider
- * @package Benkle\IGC\Generators\UniquenessProviders
- */
-class ArrayUniquenessProvider implements UniquenessProviderIterface
+class AssociativeArrayUniquenessProviderTest extends \PHPUnit_Framework_TestCase
 {
-    private $storage = [];
 
-    /**
-     * Check if a value already exists.
-     * @param mixed $value
-     * @return bool
-     */
-    public function exists($value): bool
+    public function testPut()
     {
-        return in_array($value, $this->storage);
+        $aup = new AssociativeArrayUniquenessProvider();
+        $this->assertEquals($aup, $aup->put(1));
     }
 
-    /**
-     * Add a value to the stack of existing values.
-     * @param mixed $value
-     * @return $this
-     */
-    public function put($value): UniquenessProviderIterface
+    public function testExists()
     {
-        $this->storage[] = $value;
-        return $this;
+        $aup = new AssociativeArrayUniquenessProvider();
+        $this->assertEquals(false, $aup->exists(1));
     }
+
+    public function testExists2()
+    {
+        $aup = new AssociativeArrayUniquenessProvider();
+        $this->assertEquals(false, $aup->exists(1));
+        $this->assertEquals($aup, $aup->put(1));
+        $this->assertEquals(true, $aup->exists(1));
+    }
+
 }

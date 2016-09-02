@@ -30,13 +30,13 @@ interface UniquenessProviderIterface
      * @param mixed $value
      * @return bool
      */
-    public function exists($value);
+    public function exists($value): bool;
 
     /**
      * Add a value to the stack of existing values.
      * @param mixed $value
      * @return $this
      */
-    public function put($value);
+    public function put($value): UniquenessProviderIterface;
 
 }

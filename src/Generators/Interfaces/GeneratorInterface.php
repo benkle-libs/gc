@@ -56,12 +56,12 @@ interface GeneratorInterface
      * @param UniquenessProviderIterface $provider
      * @return $this
      */
-    public function setUniquenessProvider(UniquenessProviderIterface $provider);
+    public function setUniquenessProvider(UniquenessProviderIterface $provider): GeneratorInterface;
 
     /**
      * Get the helper class which handles the checks for uniqueness.
      * @return UniquenessProviderIterface
      */
-    public function getUniquenessProvider();
+    public function getUniquenessProvider(): UniquenessProviderIterface;
 
 }

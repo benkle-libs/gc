@@ -22,10 +22,10 @@ namespace Benkle\IGC\Generators\UniquenessProviders;
 use Benkle\IGC\Generators\Interfaces\UniquenessProviderIterface;
 
 /**
- * Class ArrayUniquenessProvider
+ * Class AssociativeArrayUniquenessProvider
  * @package Benkle\IGC\Generators\UniquenessProviders
  */
-class ArrayUniquenessProvider implements UniquenessProviderIterface
+class AssociativeArrayUniquenessProvider implements UniquenessProviderIterface
 {
     private $storage = [];
 
@@ -36,7 +36,7 @@ class ArrayUniquenessProvider implements UniquenessProviderIterface
      */
     public function exists($value): bool
     {
-        return in_array($value, $this->storage);
+        return isset($this->storage[$value]);
     }
 
     /**
@@ -46,7 +46,7 @@ class ArrayUniquenessProvider implements UniquenessProviderIterface
      */
     public function put($value): UniquenessProviderIterface
     {
-        $this->storage[] = $value;
+        $this->storage[$value] = true;
         return $this;
     }
 }
